@@ -1,0 +1,162 @@
+.nav-wrapper {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px;
+        border-radius: 40px;
+        width: 75%;
+        margin: auto;
+        height: 75px;
+        background-color: #ffffff;
+        box-shadow: 6px 14px 22px 5px rgb(0 0 0 / 16%);
+
+        &__logo {
+            span {
+                font-size: 25px;
+                font-weight: 500;
+                letter-spacing: 1px;
+            }
+
+            span:first-child {
+                color: #0002A1;
+            }
+
+            span:nth-child(2) {
+                color: #000000;
+            }
+        }
+
+        &__links {
+            display: flex;
+            gap: 36px;
+            
+
+            a {
+                position: relative;
+                font-size: 17px;
+                color: #000000;
+
+                &:hover {
+                    color: #0D4C92;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    transform: scaleX(0);
+                    height: 2px;
+                    bottom: -27.6px;
+                    left: 1px;
+                    background-color: #0D4C92;
+                    transform-origin: bottom right;
+                    transition: transform 0.25s ease-out;
+                }
+
+                &:hover::after {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                }
+            }
+
+            a.active {
+                color: #0002A1;
+            }
+        }
+
+        &__userhelp {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .search-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+                border-radius: 50%;
+                background-color: rgba(33, 70, 199, 0.102);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+
+            .contact-btn button {
+                border: none;
+                padding: 10px 30px;
+                border-radius: 40px;
+                font-size: 15px;
+                letter-spacing: 0.4px;
+                color: #ffffff;
+                background-color: rgba(33, 70, 199, 0.8);
+                box-shadow: 2px 4px 8px 1px rgb(33 70 199 / 20%);
+                cursor: pointer;
+            }
+        }
+    }
+}
+.hamburger{
+    display: none;
+}
+@media screen and (max-width: 969px) {
+    .hamburger{
+        display: block;
+    }
+    .nav-wrapper {
+        height: 0;
+
+        .navbar {
+            width: 100%;
+            border-radius: 0;
+
+            &__links {
+                height: 100vh;
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 35%;
+                background-color: #ffffff;
+                position: absolute;
+                top: 74px;
+                right: -230px;
+                padding: 30px 40px;
+                transition: all ease-in 0.3s;
+                gap: 50px;
+            }
+
+            &__links.toggle {
+                display: flex;
+                right: 0;
+            }
+
+            &__userhelp {
+
+                .contact-btn button {
+                    position: absolute;
+                    top: 30rem;
+                    right: -160px;
+                    transition: all ease-in 0.3s;
+                    display: none;
+                    width: 100;
+                }
+
+                .search-icon {
+                    display: none;
+                }
+            }
+
+            &__userhelp.toggle {
+                .contact-btn button {
+                    right: 5%;
+                    display: flex;
+                }
+            }
+        }
+    }
+}
